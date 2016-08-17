@@ -1,9 +1,28 @@
 #!/usr/bin/env python
+# A Ravello SDK example showing all applications in a user account in format: 
+# Application name, ID, Creation Time, Owner, If published, Cloud/Region
+#
+# Copyright 2011-2016 Ravello Systems, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not
+# use this file except in compliance with the License.  You may obtain a copy
+# of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+# License for the specific language governing permissions and limitations under
+# the License.
+
 import ravello_sdk
 import sys
 import os
 import datetime
+import json
 from argparse import ArgumentParser
+from ravello_sdk import *
 from common import *
 
 def mkparser():
@@ -11,13 +30,14 @@ def mkparser():
         parser.add_argument("-u", dest="username",default=None,help='Ravello user account name')
         return parser
 
-def print_bps(bps):
-	for bp in bps:
-		creation_time = datetime.datetime.fromtimestamp(bp['creationTime']/1000).strftime('%Y-%m-%d %H:%M')
-		description = bp.get('description')
-		if not description: 	
-			description = ''
-		print('Blueprint name: {0:<50} ID: {1:<10} Created: {2:<20} Owner: {3:<25} Description: {4:>30}'.format(bp['name'].encode('utf-8'),bp['id'],creation_time,bp['ownerDetails']['name'],description.encode('utf-8')))
+def print_apps(apps):
+	for app in apps:
+		creation_time = datetime.datetime.fromtimestamp(app['creationTime']/1000).strftime('%Y-%m-%d %H:%M')
+		if app['published']:
+			print('Application name: {0:<50} ID: {1:<10} Creation Date: {2:<20} Owner: {3:<25} Published: yes    Cloud: {4:<10}'.format(app['name'].encode('utf-8'),app['id'],creation_time,app['ownerDetails']['name'],app['deployment']['cloudId']))
+		else:
+			print('Application name: {0:<50} ID: {1:<10} Creation Date: {2:<20} Owner: {3:<25} Published: no'.format(app['name'].encode('utf-8'),app['id'],creation_time,app['ownerDetails']['name'],app['published']))
+		
 		
 def main():
 	parser = mkparser()
@@ -33,9 +53,11 @@ def main():
 	if not client:
 		exit (1)
 
-	bps = client.get_blueprints()
-	if bps:
-		print_bps(bps)
+	#Get List of application
+	apps = client.get_blueprints()
+
+	#Display application info
+	print_apps(apps)
 
 if __name__ == '__main__':
     try:
