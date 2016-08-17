@@ -8,6 +8,6 @@
 
 from ravello_sdk import RavelloClient
 client = RavelloClient()
-client.login('jlabocki@redhat.com', 'Smartvm23')
+client.login('jlabocki@redhat.com', 'Redhat1234')
 for app in client.get_applications():
    print('Found Application: {0}'.format(app['name']))

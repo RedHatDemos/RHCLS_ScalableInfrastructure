@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+import ravello_sdk
+import sys
+import os
+import datetime
+from argparse import ArgumentParser
+from common import *
+
+def mkparser():
+        parser = ArgumentParser()
+        parser.add_argument("-u", dest="username",default=None,help='Ravello user account name')
+        return parser
+
+def print_bps(bps):
+	for bp in bps:
+		creation_time = datetime.datetime.fromtimestamp(bp['creationTime']/1000).strftime('%Y-%m-%d %H:%M')
+		description = bp.get('description')
+		if not description: 	
+			description = ''
+		print('Blueprint name: {0:<50} ID: {1:<10} Created: {2:<20} Owner: {3:<25} Description: {4:>30}'.format(bp['name'].encode('utf-8'),bp['id'],creation_time,bp['ownerDetails']['name'],description.encode('utf-8')))
+		
+def main():
+	parser = mkparser()
+	args = parser.parse_args()
+
+        #Set user credentials
+	username, password  = get_user_credentials(args.username)
+	if not username or not password:
+		exit(1)
+
+	#Connect to Ravello
+	client = connect(username, password)
+	if not client:
+		exit (1)
+
+	bps = client.get_blueprints()
+	if bps:
+		print_bps(bps)
+
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception as e:
+        sys.stderr.write('Error: {!s}\n'.format(e))
