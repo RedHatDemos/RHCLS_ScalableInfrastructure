@@ -1,0 +1,26 @@
+---
+# This playbook configures the all-in-one RHEL OSP VMs used for RHCLS Scalable Infrastructure demo.
+- hosts: $servername
+  tags: 
+    - pre-check
+  remote_user: root
+  tasks:
+   - name: Capture, disable and enable repos
+     get_url: http://www.opentlc.com/scripts/rhel7.repo dest=/etc/yum.repos.d/rhel7.repo mode=0644
+     get_url: http://www.opentlc.com/scripts/redhat.repo dest=/etc/yum.repos.d/redhat.repo mode=0644
+     yum: disablerepo=*
+     yum: enablerepo=rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-openstack-8,rhel-x86_64-server-rh-common-7
+   - name: Remove conflicting packages
+     yum: state=absent name=NetworkManager
+   - name: Install required packages
+     yum: state=present name={{ item }}
+     with items:
+     - openstack-packstack
+     - python-redis
+     - kernel
+     - mongodb
+  - name: Install RHEL OSP all-in-one
+     get_url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/answers.txt dest=/root
+     local_action command /usr/bin/packstack --answer-file=/root/answers.txt
+  
+   
