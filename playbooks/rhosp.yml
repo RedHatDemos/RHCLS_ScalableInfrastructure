@@ -19,8 +19,15 @@
      - python-redis
      - kernel
      - mongodb
+     - wget
   - name: Install RHEL OSP all-in-one
      get_url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/answers.txt dest=/root
      local_action: command /usr/bin/packstack --answer-file=/root/answers.txt
-  
+  - name: Import Glance images
+     get_url: <need to point to opentlc for Ubuntu image>
+     get_url: <need to point to opentlc for Windows image>
+     get_url: <need to point to opentlc for RHEL image>
+     local_action: source ./keystonerc_admin
+     local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
+  - name: 
    
