@@ -23,22 +23,22 @@
      - kernel
      - mongodb
      - wget
-  - name: Capture answers file for allinone OSP install
+   - name: Capture answers file for allinone OSP install
      get_url: <path to answers file> dest=/root
-  - name: Install OSP using answers file
+   - name: Install OSP using answers file
      local_action: command /usr/bin/packstack --answer-file=/root/answers.txt
-  - name: Capture glance image for Ubuntu
+   - name: Capture glance image for Ubuntu
      get_url: <location for Ubuntu image>
-  - name: Capture glance image for Windows
+   - name: Capture glance image for Windows
      get_url: <loation for Windows image>
-  - name: Capture glance image for RHEL
+   - name: Capture glance image for RHEL
      get_url: <location for RHEL image>
-  - name: Source keystone credentials
+   - name: Source keystone credentials
      local_action: source ./keystonerc_admin
-  - name: Import Ubuntu cloud image into glance
+   - name: Import Ubuntu cloud image into glance
      local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
-  - name: Import Windows cloud image into glance
+   - name: Import Windows cloud image into glance
      local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
-  - name: Import RHEL cloud image into glance
+   - name: Import RHEL cloud image into glance
      local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
    
