@@ -1,0 +1,8 @@
+---
+# This playbook configures the all-in-one RHEL OSP VMs used for RHCLS Scalable Infrastructure demo.
+- hosts: $servername
+  tags: 
+    - pre-check
+  remote_user: root
+  tasks:
+   - name: 
