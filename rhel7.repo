@@ -1,0 +1,24 @@
+[rhel-x86_64-server-7]
+name=Red Hat Enterprise Linux 7
+baseurl=***REMOVED***rhel-x86_64-server-7
+enabled=1
+gpgcheck=0
+
+[rhel-x86_64-server-rh-common-7]
+name=Red Hat Enterprise Linux 7 Common
+baseurl=***REMOVED***rhel-x86_64-server-rh-common-7
+enabled=1
+gpgcheck=0
+
+[rhel-x86_64-server-extras-7]
+name=Red Hat Enterprise Linux 7 Extras
+baseurl=***REMOVED***rhel-x86_64-server-extras-7
+enabled=1
+gpgcheck=0
+
+[rhel-x86_64-server-optional-7]
+name=Red Hat Enterprise Linux 7 Optional
+baseurl=***REMOVED***rhel-x86_64-server-optional-7
+enabled=1
+gpgcheck=0
+
