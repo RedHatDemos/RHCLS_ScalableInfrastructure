@@ -5,10 +5,13 @@
     - pre-check
   remote_user: root
   tasks:
-   - name: Capture, disable and enable repos
+   - name: Capture RHEL7 repo config
      get_url: http://www.opentlc.com/scripts/rhel7.repo dest=/etc/yum.repos.d/rhel7.repo mode=0644
+   - name: Capture redhat repo config
      get_url: http://www.opentlc.com/scripts/redhat.repo dest=/etc/yum.repos.d/redhat.repo mode=0644
+   - name: Disable all repos
      yum: disablerepo=*
+   - name: Enable required repos
      yum: enablerepo=rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-openstack-8,rhel-x86_64-server-rh-common-7
    - name: Remove conflicting packages
      yum: state=absent name=NetworkManager
@@ -20,14 +23,22 @@
      - kernel
      - mongodb
      - wget
-  - name: Install RHEL OSP all-in-one
-     get_url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/answers.txt dest=/root
+  - name: Capture answers file for allinone OSP install
+     get_url: <path to answers file> dest=/root
+  - name: Install OSP using answers file
      local_action: command /usr/bin/packstack --answer-file=/root/answers.txt
-  - name: Import Glance images
-     get_url: <need to point to opentlc for Ubuntu image>
-     get_url: <need to point to opentlc for Windows image>
-     get_url: <need to point to opentlc for RHEL image>
+  - name: Capture glance image for Ubuntu
+     get_url: <location for Ubuntu image>
+  - name: Capture glance image for Windows
+     get_url: <loation for Windows image>
+  - name: Capture glance image for RHEL
+     get_url: <location for RHEL image>
+  - name: Source keystone credentials
      local_action: source ./keystonerc_admin
+  - name: Import Ubuntu cloud image into glance
      local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
-  - name: 
+  - name: Import Windows cloud image into glance
+     local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
+  - name: Import RHEL cloud image into glance
+     local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
    
