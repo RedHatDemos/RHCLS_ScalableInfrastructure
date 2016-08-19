@@ -21,6 +21,6 @@
      - mongodb
   - name: Install RHEL OSP all-in-one
      get_url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/answers.txt dest=/root
-     local_action command /usr/bin/packstack --answer-file=/root/answers.txt
+     local_action: command /usr/bin/packstack --answer-file=/root/answers.txt
   
    
