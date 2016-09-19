@@ -36,9 +36,14 @@
    - name: Source keystone credentials
      local_action: source ./keystonerc_admin
    - name: Import Ubuntu cloud image into glance
-     local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
+     local_action: command /usr/bin/glance image-upload --name "Ubuntu" --file /root/<cloud_images>
    - name: Import Windows cloud image into glance
-     local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
+     local_action: command /usr/bin/glance image-upload --name "Windows" --file /root/<cloud_images>
    - name: Import RHEL cloud image into glance
-     local_action: command /usr/bin/glance image-upload --file /root/<cloud_images>
-   
+     local_action: command /usr/bin/glance image-upload --name "RHEL" --file /root/<cloud_images>
+   - name: Create Ubuntu instance from glance image
+     local_action: command nova boot --image Ubuntu --flavor m1.small Ubuntu
+   - name: Create Windows instance from glance image
+     local_action: command nova boot --image Windows --flavor m1.medium Windows
+   - name: Create RHEL instance from glance image
+     local_action: command nova boot --image RHEL --flavor m1.small RHEL
