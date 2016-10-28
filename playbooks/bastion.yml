@@ -1,9 +1,19 @@
 ---
 # This playbook configures the Bastion VM used for RHPDS in Ravello.
-remote_user: root
+- hosts: $servername
+  tags: 
+    - pre-check
+  remote_user: root
   tasks:
-   - name: Capture, disable and enable repos
+   - name: Capture RHEL7 repo config
      get_url: http://www.opentlc.com/scripts/rhel7.repo dest=/etc/yum.repos.d/rhel7.repo mode=0644
-     get_url: http://www.opentlc.com/scripts/redhat.repo dest=/etc/yum.repos.d/redhat.repo mode=0644
+   - name: Disable all repos
      yum: disablerepo=*
-     yum: enablerepo=rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-openstack-8,rhel-x86_64-server-rh-common-7
+   - name: Enable required repos
+     yum: enablerepo=rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-optional-7,rhel-x86_64-server-rh-common-7
+   - name: Install required packages
+     yum: state=present name={{ item }}
+     with items:
+     - nfs-utils
+   - name: Configure /etc/exports
+     get_url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/exports dest=/etc/exports mode=0644
