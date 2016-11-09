@@ -5,11 +5,10 @@
     - pre-check
   remote_user: root
 
-
   tasks:
    - name: RHEL7 repository configuration
      yum_repository:
-       name: "{{ item.name}}"
+       name: "{{ item.name }}"
        baseurl: "{{ item.baseurl }}"
        file: rhel7.repo
      with_items:
@@ -34,4 +33,7 @@
      - nfs-utils
 
    - name: Configure /etc/exports
-     get_url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/exports dest=/etc/exports mode=0644
+     get_url: 
+       url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/exports
+       dest: /etc/exports 
+       mode: 0644
