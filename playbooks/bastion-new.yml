@@ -6,16 +6,8 @@
   remote_user: root
 
   tasks:
-   - name: RHEL7 repository configuration
-     yum_repository:
-       name: "{{ item.name }}"
-       baseurl: "{{ item.baseurl }}"
-       file: rhel7.repo
-     with_items:
-       - { name: 'Red Hat Enterprise Linux 7', baseurl: '***REMOVED***rhel-7-server-rpms' }
-       - { name: 'Red Hat Enterprise Linux 7 Common', baseurl: '***REMOVED***rhel-7-server-rh-common-rpms' }
-       - { name: 'Red Hat Enterprise Linux 7 Extras', baseurl: '***REMOVED***rhel-7-server-extras-rpms' }
-       - { name: 'Red Hat Enterprise Linux 7 Optional', baseurl: '***REMOVED***rhel-7-server-optional-rpms' }
+   - name: Include repository configuration
+     include: repositories.yml
 
    - name: Disable all repos
      yum:
