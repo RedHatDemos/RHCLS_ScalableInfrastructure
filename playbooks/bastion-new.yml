@@ -1,6 +1,7 @@
 ---
 # This playbook configures the Bastion VM used for RHPDS in Ravello.
-- hosts: $servername
+- name: Configuring Bastion VM used for RHPDS in Ravello.
+  hosts: $servername
   tags:
     - pre-check
   remote_user: root
@@ -29,3 +30,11 @@
        url: https://github.com/RedHatDemos/RHCLS_ScalableInfrastructure/blob/master/exports
        dest: /etc/exports 
        mode: 0644
+       force: yes
+       notify: Export NFS
+
+  handlers:
+    - name: Export NFS
+      command: exportfs -ra
+
+...
