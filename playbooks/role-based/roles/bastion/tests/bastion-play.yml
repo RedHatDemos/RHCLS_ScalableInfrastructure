@@ -1,0 +1,10 @@
+---
+- hosts: demo-d3a7.rhpds.opentlc.com
+  gather_facts: false
+  remote_user: nenad-redhat.com
+  become: true
+  become_method: sudo
+  become_user: root
+  roles:
+    - bastion
+...
