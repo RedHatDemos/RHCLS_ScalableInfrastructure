@@ -1,4 +1,4 @@
-Role for configuring bastion hosts
+Role for configuring Bastion hosts
 =========
 This role is used to configure bastion hosts for the environments. More details to follow.
 
