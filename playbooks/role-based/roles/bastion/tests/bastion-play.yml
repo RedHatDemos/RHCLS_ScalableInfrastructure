@@ -1,7 +1,7 @@
 ---
-- hosts: demo-d3a7.rhpds.opentlc.com
+- hosts: your_host_here
   gather_facts: false
-  remote_user: nenad-redhat.com
+  remote_user: your_remote_user
   become: true
   become_method: sudo
   become_user: root

@@ -1,9 +1,12 @@
 ---
-# defaults file for bastion
+# defaults file for bastion host
+
+internal_network: 192.168.122.0/24
 
 bastion_packages: 
   - nfs-utils
   - vim
+  - iptables-services
 
 exports_url: https://raw.githubusercontent.com/RedHatDemos/RHCLS_ScalableInfrastructure/master/exports
 
@@ -13,3 +16,4 @@ rhel_repositories:
   - { name: 'rhel-x86_64-server-extras-7', baseurl: '***REMOVED***rhel-7-server-extras-rpms', description: 'Red Hat Enterprise Linux 7 Extras' }
   - { name: 'rhel-x86_64-server-optional-7', baseurl: '***REMOVED***rhel-7-server-optional-rpms', description: 'Red Hat Enterprise Linux 7 Optional' }
 
+enabled_repositories: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-optional-7,rhel-x86_64-server-rh-common-7'
