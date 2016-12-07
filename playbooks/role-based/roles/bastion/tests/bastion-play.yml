@@ -1,7 +1,7 @@
 ---
-- hosts: your_host_here
-  gather_facts: false
-  remote_user: your_remote_user
+- hosts: your_host_here ; FQDN of your host
+  gather_facts: false ; Remember to set this to true for production runs.
+  remote_user: your_remote_user ; SSH userame on the remote host
   become: true
   become_method: sudo
   become_user: root
