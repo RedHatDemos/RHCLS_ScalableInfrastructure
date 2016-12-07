@@ -20,7 +20,7 @@ rhel_repositories:
 enabled_repositories: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-optional-7,rhel-x86_64-server-rh-common-7'
 
 enabled_services:
-  - ntp
+  - ntpd
 
 disabled_services:
   - avahi-daemon
