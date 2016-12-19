@@ -15,7 +15,7 @@ All these variables can be overriden anywhere, since they have the lowest priori
 
 
 - **bastion_packages** 		- Type: list. Contains the list of packages yum should install on the Bastion host
-- **exports_url** 	 	- Type: string, Contains the path to the 'exports' file for NFS on Bastion
+- **exports_url** 	 	    - Type: string, Contains the path to the 'exports' file for NFS on Bastion
 - **rhel_repositories**		- Type: hash, Contains the required key-value pairs for the yum_repository module. 
 - **internal_network** 		- Type: string. The IP address range in CIDR notation (eg. 192.168.1.1/24) 
 - **enabled_repositories**	- Type: string. The comma-separated list of repositories to enable on the remote system.
@@ -29,10 +29,11 @@ These are other ansible roles which may be included in the future.
 Example Playbook
 ----------------
 An example of how to use the role (for instance, with variables passed in as parameters):
-
+```yaml
     - hosts: group or hostname from inventory
       roles:
          - { role: bastion, exports_url: some_new_url }
+```
 
 A simple way calling of the role is included in the *bastion.yml* file in the tests directory. 
 
