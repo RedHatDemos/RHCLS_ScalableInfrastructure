@@ -1,0 +1,25 @@
+- name: OSP repository configuration
+  yum_repository:
+    name: "{{ item.name }}"
+    baseurl: "{{ item.baseurl }}"
+    description: "{{ item.description }}"
+    gpgcheck: no
+    file: ospd
+  with_items: "{{ osp_repositories }}"
+
+- name: Enable the required repositories only
+  yum:
+    name: "*"
+    disablerepo: "*"
+    enablerepo: "{{ osp_enabled_repos }}"
+
+- name: Install required packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ osp_packages }}"
+
+- name: Remove Network Manager
+  yum:
+    name: NetworkManager
+    state: absent

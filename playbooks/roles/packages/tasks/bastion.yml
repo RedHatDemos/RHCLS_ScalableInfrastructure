@@ -1,0 +1,20 @@
+- name: Bastion repository configuration
+  yum_repository:
+    name: "{{ item.name }}"
+    baseurl: "{{ item.baseurl }}"
+    description: "{{ item.description }}"
+    gpgcheck: no
+    file: bastion
+  with_items: "{{ bastion_repositories }}"
+
+- name: Enable the required repositories only
+  yum:
+    name: "*"
+    disablerepo: "*"
+    enablerepo: "{{ bastion_enabled_repos }}"
+
+- name: Install required packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ bastion_packages }}"

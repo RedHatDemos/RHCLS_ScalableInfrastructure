@@ -1,15 +1,7 @@
 ---
-# defaults file for bastion host
+# defaults file for packages
 
-internal_network: 192.168.122.0/24
-
-bastion_packages: 
-  - nfs-utils
-  - vim
-  - iptables-services
-  - ntp
-
-exports_url: https://raw.githubusercontent.com/RedHatDemos/RHCLS_ScalableInfrastructure/master/exports
+# Repository configuration
 
 rhel_repositories:
   - { name: 'rhel-x86_64-server-7', baseurl: '***REMOVED***rhel-7-server-rpms', description: 'Red Hat Enterprise Linux 7' }
@@ -17,17 +9,22 @@ rhel_repositories:
   - { name: 'rhel-x86_64-server-extras-7', baseurl: '***REMOVED***rhel-7-server-extras-rpms', description: 'Red Hat Enterprise Linux 7 Extras' }
   - { name: 'rhel-x86_64-server-optional-7', baseurl: '***REMOVED***rhel-7-server-optional-rpms', description: 'Red Hat Enterprise Linux 7 Optional' }
 
-enabled_repositories: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-optional-7,rhel-x86_64-server-rh-common-7'
+bastion_enabled_repos: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-optional-7,rhel-x86_64-server-rh-common-7'
+osp_enabled_repos: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-rh-common-7,rhel-x86_64-server-openstack-8'
 
-enabled_services:
-  - ntpd
+# Bastion packages
 
-disabled_services:
-  - avahi-daemon
-  - chronyd
-  - cups
-  - libvirtd
-  - ModemManager
-  - oddjobd
-  - postfix
-  - wpa_supplicant
+bastion_packages:
+  - nfs-utils
+  - vim
+  - iptables-services
+  - ntp
+
+# OSPd packages
+
+osp_packages:
+ - openstack-packstack
+ - python-redis
+ - kernel
+ - mongodb
+ - wget
