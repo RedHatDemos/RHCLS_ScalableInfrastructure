@@ -13,7 +13,7 @@ This section contains a list of variables used by the role and their defult valu
 Those which should/can be changed will be marked as such followed by a short explanation.
 All these variables can be overriden anywhere, since they have the lowest priority. 
 
-
+- **setup_bastion**		- Type: bool. Should be set to yes (it is needed for package setup/install)
 - **bastion_packages** 		- Type: list. Contains the list of packages yum should install on the Bastion host
 - **exports_url** 	 	    - Type: string, Contains the path to the 'exports' file for NFS on Bastion
 - **rhel_repositories**		- Type: hash, Contains the required key-value pairs for the yum_repository module. 
@@ -23,8 +23,8 @@ All these variables can be overriden anywhere, since they have the lowest priori
 
 Dependencies
 ------------
-So far empty. If there are some dependencies in the future, they can be described here.
-These are other ansible roles which may be included in the future. 
+Depends on the following roles:
+ - packages 
 
 Example Playbook
 ----------------

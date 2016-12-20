@@ -2,6 +2,7 @@
 # defaults file for bastion host
 
 internal_network: 192.168.122.0/24
+setup_bastion: true
 
 bastion_packages: 
   - nfs-utils

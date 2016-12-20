@@ -2,10 +2,12 @@
 # tasks file for bastion
 
 - name: Include firewall (iptables) rules
+  static: yes
   include: iptables.yml
 
 - name: Include package management and installation task
-  include: packages.yml
+  static: yes
+  include: services.yml
 
 - name: Configure /etc/exports
   get_url:
