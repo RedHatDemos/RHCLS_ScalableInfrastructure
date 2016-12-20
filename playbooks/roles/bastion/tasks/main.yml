@@ -9,6 +9,16 @@
   static: yes
   include: services.yml
 
+- name: Create directories for NFS export
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+   - /exports/cinder/paris
+   - /exports/cinder/tokyo
+   - /exports/cinder/newyork 
+
 - name: Configure /etc/exports
   get_url:
     url: "{{ exports_url }}"

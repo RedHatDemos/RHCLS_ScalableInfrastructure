@@ -11,6 +11,7 @@
 # Stopping the services which are not needed on a Bastion host. Maybe those could be masked as well, for good measure. 
 
 - name: Stopping and disabling systemD services which are not needed
+  ignore_errors: yes
   systemd:
     state: stopped
     enabled: no

@@ -3,6 +3,7 @@
 
 internal_network: 192.168.122.0/24
 setup_bastion: true
+setup_osp: false
 
 bastion_packages: 
   - nfs-utils
@@ -18,11 +19,11 @@ rhel_repositories:
   - { name: 'rhel-x86_64-server-extras-7', baseurl: '***REMOVED***rhel-7-server-extras-rpms', description: 'Red Hat Enterprise Linux 7 Extras' }
   - { name: 'rhel-x86_64-server-optional-7', baseurl: '***REMOVED***rhel-7-server-optional-rpms', description: 'Red Hat Enterprise Linux 7 Optional' }
 
-enabled_repositories: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-optional-7,rhel-x86_64-server-rh-common-7'
+bastion_enabled_repos: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-optional-7,rhel-x86_64-server-rh-common-7'
 
 enabled_services:
   - ntpd
-  - iptables-services
+  - iptables
 
 disabled_services:
   - avahi-daemon

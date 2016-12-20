@@ -4,8 +4,8 @@
     baseurl: "{{ item.baseurl }}"
     description: "{{ item.description }}"
     gpgcheck: no
-    file: bastion
-  with_items: "{{ bastion_repositories }}"
+    file: rhel
+  with_items: "{{ rhel_repositories }}"
 
 - name: Enable the required repositories only
   yum:
