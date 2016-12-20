@@ -3,12 +3,6 @@
 
 # Repository configuration
 
-rhel_repositories:
-  - { name: 'rhel-x86_64-server-7', baseurl: '***REMOVED***rhel-7-server-rpms', description: 'Red Hat Enterprise Linux 7' }
-  - { name: 'rhel-x86_64-server-rh-common-7', baseurl: '***REMOVED***rhel-7-server-rh-common-rpms', description: 'Red Hat Enterprise Linux 7 Common' }
-  - { name: 'rhel-x86_64-server-extras-7', baseurl: '***REMOVED***rhel-7-server-extras-rpms', description: 'Red Hat Enterprise Linux 7 Extras' }
-  - { name: 'rhel-x86_64-server-optional-7', baseurl: '***REMOVED***rhel-7-server-optional-rpms', description: 'Red Hat Enterprise Linux 7 Optional' }
-
 osp_repositories:
   - ***REMOVED***osp10/
 
