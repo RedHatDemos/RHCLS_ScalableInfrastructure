@@ -29,3 +29,9 @@ disabled_services:
   - oddjobd
   - postfix
   - wpa_supplicant
+
+nfs_exports:
+  - /exports/cinder/paris
+  - /exports/cinder/tokyo
+  - /exports/cinder/newyork
+

@@ -7,6 +7,6 @@
   when: setup_bastion|bool 
 
 # keeps including the file
-#- include: osp.yml
-#  when: setup_osp|bool
+- include: osp.yml
+  when: setup_osp|bool
 
