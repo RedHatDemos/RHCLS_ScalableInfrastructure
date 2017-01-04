@@ -1,6 +1,9 @@
 ---
 # tasks file for ospd
-
+# If the bastion host is going to be used to configure OSP, then many of the tasks have to be 
+# either delegated to bastion, or an additional playbook should be started from bastion host 
+# itself, which would delegate certain tasks to the OSP host. 
+#
 - name: Capture answers file for all-in-one OSP install
   get_url:
    src: "{{ answers_file_url }}" 

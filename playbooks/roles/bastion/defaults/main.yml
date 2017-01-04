@@ -11,7 +11,6 @@ rhel_repositories:
   - { name: 'rhel-x86_64-server-extras-7', baseurl: "{{ repo_base_url }}/rhel-7-server-extras-rpms", description: 'Red Hat Enterprise Linux 7 Extras' }
   - { name: 'rhel-x86_64-server-optional-7', baseurl: "{{ repo_base_url }}/rhel-7-server-optional-rpms", description: 'Red Hat Enterprise Linux 7 Optional' }
 
-
 bastion_packages: 
   - nfs-utils
   - vim
