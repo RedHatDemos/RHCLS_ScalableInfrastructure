@@ -5,6 +5,13 @@ internal_network: 192.168.122.0/24
 setup_bastion: true
 setup_osp: false
 
+rhel_repositories:
+  - { name: 'rhel-x86_64-server-7', baseurl: '{{ repo_base_url }}/rhel-7-server-rpms', description: 'Red Hat Enterprise Linux 7' }
+  - { name: 'rhel-x86_64-server-rh-common-7', baseurl: '{{ repo_base_url }}/rhel-7-server-rh-common-rpms', description: 'Red Hat Enterprise Linux 7 Common' }
+  - { name: 'rhel-x86_64-server-extras-7', baseurl: "{{ repo_base_url }}/rhel-7-server-extras-rpms", description: 'Red Hat Enterprise Linux 7 Extras' }
+  - { name: 'rhel-x86_64-server-optional-7', baseurl: "{{ repo_base_url }}/rhel-7-server-optional-rpms", description: 'Red Hat Enterprise Linux 7 Optional' }
+
+
 bastion_packages: 
   - nfs-utils
   - vim

@@ -4,11 +4,9 @@
 # All the variables have a default set. Those, however can be overriden any time (defaults have the lowest var priority). 
 
 - include: osp.yml
-  static: no
-  when: setup_osp|bool
+  when: setup_osp
 
 - include: bastion.yml
-  static: no
-  when: setup_bastion|bool 
+  when: setup_bastion 
 
 
