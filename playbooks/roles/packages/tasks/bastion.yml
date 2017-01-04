@@ -7,13 +7,13 @@
     file: rhel
   with_items: "{{ rhel_repositories }}"
 
-- name: Enable the required repositories only
+- name: Bastion - Enable the required repositories only
   yum:
     name: "*"
     disablerepo: "*"
     enablerepo: "{{ bastion_enabled_repos }}"
 
-- name: Install required packages
+- name: Bastion - Install required packages
   yum:
     name: "{{ item }}"
     state: latest
