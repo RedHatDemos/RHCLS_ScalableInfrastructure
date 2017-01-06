@@ -14,7 +14,7 @@
     path: "{{ item }}"
     state: directory
     mode: 0755
-  with_items: "{{ nfs_exports }}"
+  with_items: "{{ nfs_export_dirs }}"
 
 - name: Configure /etc/exports
   get_url:

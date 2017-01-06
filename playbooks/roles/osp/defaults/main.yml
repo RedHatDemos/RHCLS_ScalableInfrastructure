@@ -1,6 +1,21 @@
 ---
 # defaults file for ospd
 
+# Package definitions
+
+osp_enabled_repos: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-rh-common-7,rhel-x86_64-server-openstack-8'
+
+# OSPd packages
+
+osp_packages:
+  - openstack-packstack
+  - python-redis
+  - kernel
+  - mongodb
+  - wget
+
+# Glance configuration
+
 glance_img_destination: /root/cloud_images
 
 glance_images:

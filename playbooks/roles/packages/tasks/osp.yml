@@ -1,3 +1,6 @@
+- debug:
+    msg: "Configuring OSP packages"
+
 - name: OSP repository configuration
   yum_repository:
     name: "{{ item.name }}"
