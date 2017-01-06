@@ -23,13 +23,7 @@ enabled_services:
   - nfs-server
 
 disabled_services:
-  - avahi-daemon
-  - chronyd
   - firewalld
-  - cups
-  - libvirtd
-  - ModemManager
-  - oddjobd
   - postfix
   - wpa_supplicant
 
