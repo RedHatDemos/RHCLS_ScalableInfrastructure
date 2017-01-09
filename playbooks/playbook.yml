@@ -1,0 +1,21 @@
+---
+- hosts: "bastion"
+  gather_facts: true
+  remote_user: root
+  tags: bastion
+  roles:
+    - bastion
+  vars:
+    setup_bastion: true
+    repo_base_url: http://repo_fqdn_address/repos
+
+- hosts: "tokyo"
+  gather_facts: true
+  remote_user: root
+  tags: osp
+  roles: 
+    - osp
+  vars:
+    setup_osp: true
+...
+

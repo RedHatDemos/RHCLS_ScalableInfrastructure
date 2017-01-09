@@ -1,6 +1,8 @@
 ---
 # defaults file for ospd
 
+ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q root@{{bastion_host}}"'
+
 # Package definitions
 
 osp_enabled_repos: 'rhel-x86_64-server-7,rhel-x86_64-server-extras-7,rhel-x86_64-server-rh-common-7,rhel-x86_64-server-openstack-8'
@@ -19,6 +21,6 @@ osp_packages:
 glance_img_destination: /root/cloud_images
 
 glance_images:
-  - { name:'Windows', src: '', dst: '', flavor: 'm1.medium' }
-  - { name:'Ubuntu', src: '', dst: '', flavor: 'm1.small' }
-  - { name:'RHEL', src: '',dst: '', flavor: 'm1.small' }
+  - { name: 'Windows', src: '', dst: '', flavor: 'm1.medium' }
+  - { name: 'Ubuntu', src: '', dst: '', flavor: 'm1.small' }
+  - { name: 'RHEL', src: '',dst: '', flavor: 'm1.small' }
